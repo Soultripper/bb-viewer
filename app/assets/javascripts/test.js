@@ -36,7 +36,7 @@ var keyboard = new THREEx.KeyboardState();
     dae = collada.scene;
     MovingCube = dae;
     dae.scale.x = dae.scale.y = dae.scale.z = 1;
-    THREE.GeometryUtils.center( collada )
+    dae.rotateX(180)
     dae.updateMatrix();
 
     // dae.translateZ(-3)
@@ -48,7 +48,7 @@ var keyboard = new THREEx.KeyboardState();
   function init() {
 
     camera = new THREE.PerspectiveCamera( 80, window.innerWidth / window.innerHeight, 1, 2000 );
-    camera.position.set( 0,-2,0);
+    camera.position.set( 0, 15,0);
 
     controls = new THREE.OrbitControls( camera );
     controls.addEventListener( 'change', render );
@@ -80,7 +80,7 @@ var keyboard = new THREEx.KeyboardState();
       // renderer = new THREE.WebGLRenderer();
       renderer = new THREE.WebGLRenderer( { antialias: false } );
       // renderer.setClearColor( scene.fog.color, 1 );
-      renderer.setSize( window.innerWidth, window.innerHeight );
+      renderer.setSize( window.innerWidth-100, window.innerHeight -100);
 
       $container.append( renderer.domElement );
 
@@ -111,7 +111,7 @@ var keyboard = new THREEx.KeyboardState();
         requestAnimationFrame( animate );
         controls.update();
         update()
-        // render();
+        render();
       }
 
     function render() {
